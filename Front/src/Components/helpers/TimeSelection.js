@@ -45,7 +45,9 @@ const TimeSelection = () => {
         for (let hour = startHour; hour < endHour; hour++) {
           for (let minute = 0; minute < 60; minute += 30) {
             const time = date.hour(hour).minute(minute);
-            const formattedDateTime = `${formattedDate} at ${time.format("H:mm")}`;
+            const formattedDateTime = `${formattedDate} at ${time.format(
+              "H:mm"
+            )}`;
 
             if (!occupiedTimes.includes(formattedDateTime)) {
               dailyTimes[formattedDate].push(time);
@@ -160,6 +162,7 @@ const TimeSelection = () => {
           <IconButton
             variant="contained"
             onClick={handleConfirm}
+            disabled={!selectedTime}
             sx={{ marginBottom: "20px" }}
           >
             <ArrowForwardIcon sx={{ color: "#007aff" }} />
